@@ -16,6 +16,6 @@ set(SRC libft/ft_atoi.c libft/ft_bzero.c libft/ft_isalnum.c libft/ft_isalpha.c l
 		libft/ft_putchar_fd.c	libft/ft_putstr_fd.c	libft/ft_putendl_fd.c	libft/ft_putnbr_fd.c
 		libft/ft_itoa.c	libft/ft_strsplit.c	libft/ft_lstnew.c	libft/ft_lstdelone.c	libft/ft_lstdel.c
 		libft/ft_lstadd.c	libft/ft_lstiter.c	libft/ft_lstmap.c	libft/ft_max.c	libft/ft_printbits.c
-		libft/gnl/get_next_line.c work_with_list.c map.c lst_copy.c create_matrix.c)
+		libft/gnl/get_next_line.c work_with_list.c map.c lst_copy.c create_matrix.c solver.c check_solution.c)
 
 add_executable(v_2 main.c ${SRC} fillit.h types.c validator.c solution.c)

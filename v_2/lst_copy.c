@@ -12,6 +12,13 @@
 
 #include "fillit.h"
 
+static void		fig_cpy(t_tetr *src, t_tetr *dst)
+{
+	ft_memcpy(dst->fig_tab, src->fig_tab, sizeof(int) * 8);
+	dst->fig = src->fig;
+	dst->fig_num = src->fig_num;
+}
+
 void			lst_copy(t_tetr **head, t_tetr **sol_matr)
 {
 	t_tetr		*tmp;
@@ -24,7 +31,7 @@ void			lst_copy(t_tetr **head, t_tetr **sol_matr)
 		*sol_matr = NULL;
 	}
 	*sol_matr = new_list();
-	ft_memcpy((*sol_matr)->fig_tab, tmp->fig_tab, sizeof(int) * 8);
+	fig_cpy(tmp, *sol_matr);
 	tmp = tmp->next;
 	tmp_sm = *sol_matr;
 	if (tmp != *head)
@@ -32,7 +39,7 @@ void			lst_copy(t_tetr **head, t_tetr **sol_matr)
 		while (tmp)
 		{
 			tmp_sm = add_list(sol_matr);
-			ft_memcpy(tmp_sm->fig_tab, tmp->fig_tab, sizeof(int) * 8);
+			fig_cpy(tmp, tmp_sm);
 			tmp = tmp->next;
 			if (tmp == *head)
 				break;

@@ -22,6 +22,10 @@ static void		alloc_map(int **map, t_tetr **head)
 	*map = malloc(sizeof(int) * 8);
 	while (i * i < fig_sqr)
 		i++;
+	if ((*head)->fig_tab[6] > i)
+		i = (*head)->fig_tab[6] + 1;
+	else if ((*head)->fig_tab[7] > i)
+		i = (*head)->fig_tab[7] + 1;
 	(*map)[0] = 0;
 	(*map)[1] = 0;
 	(*map)[2] = 0;

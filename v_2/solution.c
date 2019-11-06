@@ -165,6 +165,53 @@ void			solution(int **map, t_tetr **head, t_tetr **sol_matr)
 	create_matrix(map, sol_matr);
 
 
+	/*
+	 * Вывод списка положений
+	 */
+	/*t_tetr *tmp = *sol_matr;
+	while (tmp)
+	{
+		ft_putnbr(tmp->fig);
+		ft_putchar('\n');
+		tmp = tmp->next;
+		if (tmp == *sol_matr)
+			break ;
+	}*/
+
+/*
+	t_tetr *tmp;
+	t_tetr *tmp_m = *sol_matr;
+	while (tmp_m)
+	{
+		ft_putnbr(tmp_m->fig_num);
+		ft_putchar('\t');
+		tmp = tmp_m->pos_next;
+		while (tmp != tmp_m)
+		{
+			ft_putnbr(tmp->important_indicator);
+			tmp = tmp->pos_next;
+		}
+		ft_putchar('\n');
+		tmp_m = tmp_m->next;
+		if (tmp_m == *sol_matr)
+			break ;
+	}*/
+
+	if (!(solver(sol_matr)))
+	{
+		ft_putstr("\nsolver returned 0\n");
+		solution(map, head, sol_matr);
+	}
+	else
+	{
+		ft_putstr("\nGood news!\n");
+		print_solution(sol_matr, (*map)[7] + 1); // Тут же нужно очистить матрицу и, конечно, проверить утечки
+	}
+
+		/*
+		 * Решается ли задача для ОДНОЙ фигурки?
+		 */
+
 
 	/*
 	 *
@@ -195,16 +242,20 @@ void			solution(int **map, t_tetr **head, t_tetr **sol_matr)
 	 *
 	 */
 
-	t_tetr *tmp;
-	tmp = (*sol_matr)->pos_next->pos_next;
+	/*t_tetr *tmp;
+	tmp = *sol_matr;
 	while (tmp)
 	{
 		ft_putnbr(tmp->important_indicator);
+		ft_putchar('\t');
+		ft_putnbr(tmp->fig);
+		ft_putchar('\t');
+		ft_putnbr(tmp->fig_num);
 		ft_putchar('\n');
 		tmp = tmp->next;
-		if (tmp == (*sol_matr)->pos_next->pos_next)
+		if (tmp == *sol_matr)
 			break ;
-	}
+	}*/
 
 
 
