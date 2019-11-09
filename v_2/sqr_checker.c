@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sqr_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorphan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 16:06:21 by dorphan           #+#    #+#             */
-/*   Updated: 2019/10/29 16:06:23 by dorphan          ###   ########.fr       */
+/*   Created: 2019/11/09 17:17:01 by dorphan           #+#    #+#             */
+/*   Updated: 2019/11/09 17:17:04 by dorphan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int			main(int ac, char **av)
+int			sqr_checker(t_tetr **head)
 {
-	t_tetr	*head;
-	t_tetr	*sol_matr;
-	int		*map;
+	t_tetr	*tmp;
+	int		i;
 
-	if (ac == 2)
+	tmp = *head;
+	i = 0;
+	while (tmp)
 	{
-		if (!(validator(av[1], &head)))
-			ft_putstr("error\n");
-		else
-		{
-			solution(&map, &head, &sol_matr);
-			lst_del(&head);
-			free(map);
-			lst_del(&sol_matr);
-		}
+		if (tmp->fig != 52224)
+			return (0);
+		tmp = tmp->next;
+		if (tmp == *head)
+			break ;
 	}
-	else
-		ft_putstr("usage: ./fillit source_file\n");
-	return (0);
+	return (1);
 }

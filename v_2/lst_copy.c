@@ -17,6 +17,7 @@ static void		fig_cpy(t_tetr *src, t_tetr *dst)
 	ft_memcpy(dst->fig_tab, src->fig_tab, sizeof(int) * 8);
 	dst->fig = src->fig;
 	dst->fig_num = src->fig_num;
+	dst->pos = src->pos;
 }
 
 void			lst_copy(t_tetr **head, t_tetr **sol_matr)
@@ -42,7 +43,7 @@ void			lst_copy(t_tetr **head, t_tetr **sol_matr)
 			fig_cpy(tmp, tmp_sm);
 			tmp = tmp->next;
 			if (tmp == *head)
-				break;
+				break ;
 		}
 	}
 }

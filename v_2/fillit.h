@@ -20,9 +20,10 @@ typedef struct		s_tetr
 {
 	int				fig_num;
 	int				fig;
-	int 			pos;
-	int 			important_indicator;
-	int 			fig_tab[8];
+	int				pos;
+	int				important_indicator;
+	int				pos_in_sol_matr;
+	int				fig_tab[8];
 	struct s_tetr	*pos_next;
 	struct s_tetr	*pos_prev;
 	struct s_tetr	*prev;
@@ -38,12 +39,14 @@ int					list_validation(t_tetr **head);
 void				type_to_tab_first(t_tetr *list);
 void				solution(int **map, t_tetr **head, t_tetr **sol_matr);
 void				create_map(int **map, t_tetr **head);
-//t_tetr				*add_fig_pos(t_tetr *list);
 t_tetr				*add_fig_pos(t_tetr *fig_pos, t_tetr *head);
 void				lst_copy(t_tetr **head, t_tetr **sol_matr);
 void				create_matrix(int **map, t_tetr **sol_matr);
-int					solver(t_tetr **sol_matr);
+int					sqr_checker(t_tetr **head);
+int					solver(t_tetr **sol_matr, int sqr);
+int					indicators_calc(t_tetr **sol_matr);
 int					check_solution(t_tetr *list, t_tetr **sol_matr);
+void				show_lines(t_tetr *list, t_tetr **sol_matr);
 void				print_solution(t_tetr **sol_matr, int i);
 int					lines_calc(t_tetr *list, int k);
 

@@ -61,7 +61,7 @@ static int		to_bit(char *str)
 			if (sim % 4 == 0 && sim % (n + 1) == 0 && sim != 0)
 				n++;
 			else if (*(str - 1) == '\n' && *(str - 2) != '\n')
-				n = n;
+				n = n + 0;
 			else
 				return (0);
 		}
@@ -129,10 +129,6 @@ int				validator(char *file, t_tetr **head)
 		free(str);
 		return (0);
 	}
-	/*printf("first fig is [%i]\n", (*head)->prev->fig);
-	int i = 0;
-	while (i < 8)
-		ft_putnbr((*head)->prev->fig_tab[i++]);*/
 	free(str);
 	return (1);
 }

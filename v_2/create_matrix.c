@@ -15,7 +15,7 @@
 static void		create_elem(t_tetr *list, int i, int max_map)
 {
 	t_tetr		*tmp;
-	int 		k;
+	int			k;
 
 	k = 1;
 	tmp = list;
@@ -23,6 +23,8 @@ static void		create_elem(t_tetr *list, int i, int max_map)
 		tmp = tmp->pos_next;
 	tmp->pos_next = new_list();
 	tmp->pos_next->fig = 0;
+	tmp->pos_next->pos_in_sol_matr = tmp->pos_in_sol_matr + 1;
+	tmp->pos_next->pos = tmp->pos;
 	tmp->pos_next->fig_num = list->fig_num;
 	tmp->pos_next->pos_prev = tmp;
 	tmp->pos_next->pos_next = list;
@@ -38,7 +40,7 @@ static void		create_elem(t_tetr *list, int i, int max_map)
 static void		create_lines(int **map, t_tetr **sol_matr)
 {
 	int			i;
-	int 		nodes;
+	int			nodes;
 	t_tetr		*tmp;
 
 	tmp = *sol_matr;

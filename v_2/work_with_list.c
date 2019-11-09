@@ -46,6 +46,7 @@ t_tetr			*new_list(void)
 	if (!(list = malloc(sizeof(t_tetr))))
 		return (NULL);
 	list->important_indicator = 0;
+	list->pos_in_sol_matr = 0;
 	list->fig_num = 0;
 	list->fig = 0;
 	list->pos = 0;
@@ -84,20 +85,3 @@ t_tetr			*add_fig_pos(t_tetr *fig_pos, t_tetr *fig_next)
 	fig_pos = fig_pos->next;
 	return (fig_pos);
 }
-
-/*t_tetr			*add_fig_pos(t_tetr *list)
-{
-	t_tetr		*tmp;
-
-	tmp = list;
-	while (tmp->pos_next != list)
-		tmp = tmp->pos_next;
-	tmp->pos_next = new_list();
-	tmp->pos_next->fig_num = tmp->fig_num;
-	tmp->pos_next->pos_prev = tmp;
-	tmp->pos_next->pos_next = list;
-	list->pos_prev = tmp->pos_next;
-	tmp = tmp->pos_next;
-	return (tmp);
-}*/
-

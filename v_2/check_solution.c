@@ -36,7 +36,7 @@ static void		print_sim(t_tetr *list)
 void			print_solution(t_tetr **sol_matr, int i)
 {
 	t_tetr		*tmp;
-	int 		num;
+	int			num;
 
 	num = 1;
 	tmp = (*sol_matr)->pos_next;
@@ -50,10 +50,10 @@ void			print_solution(t_tetr **sol_matr, int i)
 	}
 }
 
-int 		lines_calc(t_tetr *list, int k)
+int				lines_calc(t_tetr *list, int k)
 {
-	t_tetr	*tmp;
-	int		i;
+	t_tetr		*tmp;
+	int			i;
 
 	i = 0;
 	tmp = list->pos_next;
@@ -69,22 +69,22 @@ int 		lines_calc(t_tetr *list, int k)
 	return (0);
 }
 
-int 		check_solution(t_tetr *list, t_tetr **sol_matr)
+int				check_solution(t_tetr *list, t_tetr **sol_matr)
 {
-	t_tetr	*tmp;
-	int 	fig;
+	t_tetr		*tmp;
+	int			i;
 
 	tmp = list->pos_next;
-	fig = 0;
+	i = 0;
 	while (tmp)
 	{
 		tmp = tmp->next;
 		if (tmp == list->pos_next)
 			break ;
-		if (tmp->fig_num != fig)
-			fig++;
+		if (tmp->fig_num != tmp->prev->fig_num)
+			i++;
 	}
-	if (fig == (*sol_matr)->prev->fig_num)
+	if (i == (*sol_matr)->prev->fig_num)
 		return (1);
 	return (0);
 }
