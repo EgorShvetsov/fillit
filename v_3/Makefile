@@ -32,18 +32,22 @@ FLAGS = -Wall -Wextra -Werror
 
 OBJ = $(SRC:.c=.o)
 
-all: $(NAME)
+LIBFT = libft/
 
-$(NAME): $(OBJ)
-		$(CC) $(FLAGS) $(OBJ) libft/libft.a -o $(NAME)
+all:		$(NAME)
 
-%.o: %.c -I
+$(NAME):	$(OBJ)
+			make -C $(LIBFT)
+			$(CC) $(FLAGS) $(OBJ) libft/libft.a -o $(NAME)
+
+%.o: 		%.c -I
 			$(CC) -o $@ $(FLAGS) $<
 
-clean:
-			rm -f $(OBJ)
+clean:		rm -f $(OBJ)
+			make -C $(LIBFT) clean
 
-fclean: clean
+fclean: 	clean
 			rm -f $(NAME)
+			make -C $(LIBFT) fclean
 
-re: fclean all
+re: 		fclean all
