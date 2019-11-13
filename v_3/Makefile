@@ -43,7 +43,8 @@ $(NAME):	$(OBJ)
 %.o: 		%.c -I
 			$(CC) -o $@ $(FLAGS) $<
 
-clean:		rm -f $(OBJ)
+clean:		
+			rm -f $(OBJ)
 			make -C $(LIBFT) clean
 
 fclean: 	clean
